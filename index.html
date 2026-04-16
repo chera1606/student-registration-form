@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-card">
+        <h1>Student Registration Form</h1>
+
+        <form id="registrationForm" action="php/register.php" method="post">
+          <div class="row">
+            <div class="column">
+              <label for="firstName">First Name</label>
+              <input id="firstName" type="text" name="firstName" required />
+            </div>
+
+            <div class="column">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" type="text" name="lastName" required />
+            </div>
+
+            <div class="column">
+              <label for="department">Department</label>
+              <select id="department" name="department" required>
+                <option value="">Select department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Business">Business</option>
+                <option value="Arts">Arts</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column">
+              <span class="field-label">Gender</span>
+              <div class="options">
+                <label for="genderMale">
+                  <input
+                    id="genderMale"
+                    type="radio"
+                    name="gender"
+                    value="Male"
+                    required
+                  />
+                  Male
+                </label>
+                <label for="genderFemale">
+                  <input
+                    id="genderFemale"
+                    type="radio"
+                    name="gender"
+                    value="Female"
+                  />
+                  Female
+                </label>
+                <label for="genderOther">
+                  <input
+                    id="genderOther"
+                    type="radio"
+                    name="gender"
+                    value="Other"
+                  />
+                  Other
+                </label>
+              </div>
+            </div>
+
+            <div class="column">
+              <span class="field-label">Hobbies</span>
+              <div class="options">
+                <label for="hobbyReading">
+                  <input
+                    id="hobbyReading"
+                    type="checkbox"
+                    name="hobbies[]"
+                    value="Reading"
+                  />
+                  Reading
+                </label>
+                <label for="hobbySports">
+                  <input
+                    id="hobbySports"
+                    type="checkbox"
+                    name="hobbies[]"
+                    value="Sports"
+                  />
+                  Sports
+                </label>
+                <label for="hobbyMusic">
+                  <input
+                    id="hobbyMusic"
+                    type="checkbox"
+                    name="hobbies[]"
+                    value="Music"
+                  />
+                  Music
+                </label>
+                <label for="hobbyTravel">
+                  <input
+                    id="hobbyTravel"
+                    type="checkbox"
+                    name="hobbies[]"
+                    value="Travel"
+                  />
+                  Travel
+                </label>
+              </div>
+            </div>
+
+            <div class="column">
+              <label for="others">Other Notes</label>
+              <textarea id="others" name="others"></textarea>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="btn register">Register</button>
+            <button type="button" class="btn clear" id="clearBtn">Clear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
