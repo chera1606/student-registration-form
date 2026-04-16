@@ -10,17 +10,34 @@
     <div class="container">
       <div class="form-card">
         <h1>Student Registration Form</h1>
+        <p class="form-intro">
+          Enter the student's details below to complete registration.
+        </p>
 
         <form id="registrationForm" action="php/register.php" method="post">
           <div class="row">
             <div class="column">
               <label for="firstName">First Name</label>
-              <input id="firstName" type="text" name="firstName" required />
+              <input
+                id="firstName"
+                type="text"
+                name="firstName"
+                placeholder="Enter first name"
+                autocomplete="given-name"
+                required
+              />
             </div>
 
             <div class="column">
               <label for="lastName">Last Name</label>
-              <input id="lastName" type="text" name="lastName" required />
+              <input
+                id="lastName"
+                type="text"
+                name="lastName"
+                placeholder="Enter last name"
+                autocomplete="family-name"
+                required
+              />
             </div>
 
             <div class="column">
@@ -114,7 +131,11 @@
 
             <div class="column">
               <label for="others">Other Notes</label>
-              <textarea id="others" name="others"></textarea>
+              <textarea
+                id="others"
+                name="others"
+                placeholder="Add any extra information here"
+              ></textarea>
             </div>
           </div>
 
