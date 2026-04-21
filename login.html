@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Student Registration</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="login-page">
+    <div class="container">
+      <div class="form-card auth-card">
+        <h1>Login Form</h1>
+
+        <form id="loginForm" action="php/login.php" method="post" class="auth-form">
+          <div class="column">
+            <label for="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              name="username"
+              placeholder="Enter username"
+              autocomplete="username"
+              required
+            />
+          </div>
+
+          <div class="column">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <div class="button-group auth-buttons">
+            <button type="submit" class="btn register">Login</button>
+            <button type="button" class="btn clear" id="clearLoginBtn">Clear</button>
+          </div>
+        </form>
+
+        <p class="form-link"><a href="index.html">Create New Account</a></p>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
