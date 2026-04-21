@@ -58,6 +58,7 @@ label,
 }
 
 input[type="text"],
+input[type="password"],
 select,
 textarea {
   width: 100%;
@@ -74,6 +75,7 @@ textarea {
 }
 
 input[type="text"]:focus,
+input[type="password"]:focus,
 select:focus,
 textarea:focus {
   outline: none;
@@ -111,6 +113,9 @@ textarea {
 }
 
 .btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
   min-width: 140px;
   padding: 12px 24px;
   border: 0;
@@ -138,6 +143,109 @@ textarea {
   background: linear-gradient(135deg, #d64545, #e46363);
 }
 
+.auth-card {
+  max-width: 520px;
+}
+
+.auth-form {
+  display: grid;
+  gap: 20px;
+}
+
+.auth-buttons {
+  margin-top: 4px;
+}
+
+.form-link {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.form-link a {
+  color: #0b6bcb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.status-text {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.error-text {
+  color: #a53b3b;
+}
+
+.login-page {
+  background: #e5e7eb;
+}
+
+.login-page .auth-card {
+  max-width: 540px;
+  background: #f2f2f2;
+  border: 1px solid #e3e3e3;
+  border-radius: 14px;
+  padding: 40px 44px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.login-page h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 26px;
+}
+
+.login-page .auth-form {
+  gap: 14px;
+}
+
+.login-page label {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.login-page input[type="text"],
+.login-page input[type="password"] {
+  background: #ffffff;
+  border: 1px solid #c6c6c6;
+  border-radius: 8px;
+  min-height: 52px;
+}
+
+.login-page .auth-buttons {
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.login-page .btn {
+  min-width: 94px;
+  padding: 10px 16px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.login-page .register {
+  background: #0f7ded;
+}
+
+.login-page .clear {
+  background: #dc3545;
+}
+
+.login-page .form-link {
+  margin-top: 18px;
+}
+
+.login-page .form-link a {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 @media (max-width: 860px) {
   .form-card {
     padding: 24px;
@@ -154,5 +262,17 @@ textarea {
 
   .btn {
     width: 100%;
+  }
+
+  .login-page .auth-card {
+    padding: 28px 20px;
+  }
+
+  .login-page h1 {
+    font-size: 38px;
+  }
+
+  .login-page label {
+    font-size: 20px;
   }
 }
