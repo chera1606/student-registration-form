@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS registration_form;
+USE registration_form;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  department VARCHAR(100) NOT NULL,
+  gender VARCHAR(20) NOT NULL,
+  hobbies VARCHAR(255) NOT NULL,
+  other_notes TEXT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO users (username, password_hash)
+VALUES ('admin', '$2y$10$mZyoh/s6U8ETOGq76uTsmeLO8wPe48sN57AVV.CbxyPuF01IKVaxi')
+ON DUPLICATE KEY UPDATE username = VALUES(username);
