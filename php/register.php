@@ -1,4 +1,12 @@
 <?php
+session_start();
+require_once __DIR__ . "/db.php";
+
+if (!($_SESSION["is_logged_in"] ?? false)) {
+    header("Location: ../login.html");
+    exit;
+}
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: ../index.html");
     exit;
@@ -6,7 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
 function clean_input(string $value): string
 {
-    return htmlspecialchars(trim($value), ENT_QUOTES, "UTF-8");
+    return trim($value);
+}
+
+function escape_output(string $value): string
+{
+    return htmlspecialchars($value, ENT_QUOTES, "UTF-8");
 }
 
 $allowedDepartments = ["Computer Science", "Engineering", "Business", "Arts"];
@@ -45,6 +58,21 @@ if (!in_array($gender, $allowedGenders, true)) {
     $gender = "Not selected";
 } else {
     $gender = clean_input($gender);
+}
+
+$saveSuccess = false;
+
+if (!$errors) {
+    try {
+        $stmt = $conn->prepare(
+            "INSERT INTO students (first_name, last_name, department, gender, hobbies, other_notes) VALUES (?, ?, ?, ?, ?, ?)"
+        );
+        $stmt->bind_param("ssssss", $firstName, $lastName, $department, $gender, $hobbiesList, $others);
+        $saveSuccess = $stmt->execute();
+        $stmt->close();
+    } catch (mysqli_sql_exception $exception) {
+        $errors[] = "Registration data could not be saved to database.";
+    }
 }
 ?>
 <!doctype html>
@@ -120,17 +148,17 @@ if (!in_array($gender, $allowedGenders, true)) {
       <?php else: ?>
         <h1>Registration Submitted</h1>
         <div class="status success">
-          Student registration was submitted successfully.
+          <?php echo $saveSuccess ? "Student registration was submitted and saved successfully." : "Student registration was submitted successfully."; ?>
         </div>
-        <p><strong>First Name:</strong> <?php echo $firstName; ?></p>
-        <p><strong>Last Name:</strong> <?php echo $lastName; ?></p>
-        <p><strong>Department:</strong> <?php echo $department; ?></p>
-        <p><strong>Gender:</strong> <?php echo $gender; ?></p>
-        <p><strong>Hobbies:</strong> <?php echo $hobbiesList; ?></p>
-        <p><strong>Other Notes:</strong> <?php echo $others !== "" ? $others : "None"; ?></p>
+        <p><strong>First Name:</strong> <?php echo escape_output($firstName); ?></p>
+        <p><strong>Last Name:</strong> <?php echo escape_output($lastName); ?></p>
+        <p><strong>Department:</strong> <?php echo escape_output($department); ?></p>
+        <p><strong>Gender:</strong> <?php echo escape_output($gender); ?></p>
+        <p><strong>Hobbies:</strong> <?php echo escape_output($hobbiesList); ?></p>
+        <p><strong>Other Notes:</strong> <?php echo $others !== "" ? escape_output($others) : "None"; ?></p>
       <?php endif; ?>
 
-      <p><a href="../index.html">Back to form</a></p>
+      <p><a href="../index.html">Back to form</a> | <a href="../php/logout.php">Logout</a></p>
     </div>
   </body>
 </html>
